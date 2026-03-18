@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuffield Health – Weekly Class Schedule Analysis</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      color: #1f2937;
+      background: #f9fafb;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    header {
+      max-width: 1600px;
+      margin: 0 auto 1.5rem;
+    }
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #005eb8;   /* Nuffield blue */
+    }
+    header h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #374151;
+      margin-top: 0.15rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: #6b7280;
+    }
+
+    .legend {
+      max-width: 1600px;
+      margin: 0 auto 1rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .legend span { display: flex; align-items: center; gap: 0.3rem; }
+    .legend-dot {
+      width: 10px; height: 10px; border-radius: 2px; display: inline-block;
+    }
+
+    .table-wrap {
+      max-width: 1600px;
+      margin: 0 auto;
+      overflow-x: auto;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #fff;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #1e3a5f;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 0.55rem 0.5rem;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    thead th.gym-name { text-align: left; }
+    thead th:hover { background: #2d5490; }
+    thead th.sort-asc::after  { content: " ↑"; opacity: .8; }
+    thead th.sort-desc::after { content: " ↓"; opacity: .8; }
+
+    /* Override category header colours while keeping text readable */
+    thead th[style*="background"] {
+      color: #1f2937;
+    }
+
+    tbody tr:nth-child(even) { background: #f3f4f6; }
+    tbody tr:hover { background: #e0f0ff; }
+
+    td {
+      padding: 0.4rem 0.55rem;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: middle;
+    }
+    td.gym-name {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    td.gym-name a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    td.gym-name a:hover { text-decoration: underline; }
+
+    td.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* off-peak and weekend column headers */
+    th.col-offpeak { min-width: 90px; }
+    th.col-weekend  { min-width: 80px; }
+
+    .pct { font-size: 0.75em; color: #6b7280; }
+
+    footer {
+      max-width: 1600px;
+      margin: 2rem auto 0;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+    footer a { color: #9ca3af; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Nuffield Health</h1>
+  <h2>Weekly Class Schedule Analysis</h2>
+  <p>
+    Week: <strong>23 Mar – 29 Mar 2026</strong>
+    &nbsp;·&nbsp; 110 gyms with data
+    &nbsp;·&nbsp; Updated: 18 Mar 2026 at 12:08 GMT
+  </p>
+  <p style="margin-top:.4rem;font-size:.78rem;color:#6b7280">
+    <em>Off-peak weekday</em> = classes starting before 09:00 or from 18:00, Mon–Fri.
+    Click any column header to sort. Times are UK local (BST/GMT).
+  </p>
+</header>
+
+<div class="table-wrap">
+  <table id="report">
+    <thead>
+      <tr>
+        <th class="gym-name sortable" data-col="name">Gym</th>
+        <th class="num sortable" data-col="total">Total<br>classes</th>
+        <th class="num sortable col-offpeak" data-col="offpeak">
+          Off-peak<br>weekday
+        </th>
+        <th class="num sortable col-weekend" data-col="weekend">Weekend</th>
+        <th class="num sortable" data-col="cat_swim" style="background:#dbeafe">Swim / Aqua</th><th class="num sortable" data-col="cat_cycle" style="background:#fed7aa">Cycle / Spin</th><th class="num sortable" data-col="cat_balance" style="background:#ede9fe">Yoga / Relax</th><th class="num sortable" data-col="cat_hiit" style="background:#fee2e2">HIIT</th><th class="num sortable" data-col="cat_athletic" style="background:#d1d5db">Strength</th><th class="num sortable" data-col="cat_cardio" style="background:#d1fae5">Cardio</th><th class="num sortable" data-col="cat_dance" style="background:#fce7f3">Dance</th><th class="num sortable" data-col="cat_tone" style="background:#fef9c3">Tone</th><th class="num sortable" data-col="cat_junior" style="background:#dcfce7">Junior</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/aberdeen" target="_blank" rel="noopener">
+            Aberdeen
+          </a>
+        </td>
+        <td class="num" data-val="59">59</td>
+        <td class="num" data-val="27">27 <span class="pct">(46%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="0">–</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="15">15</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/aylesbury" target="_blank" rel="noopener">
+            Aylesbury
+          </a>
+        </td>
+        <td class="num" data-val="72">72</td>
+        <td class="num" data-val="34">34 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="23">23</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="19">19</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/baltimore-wharf" target="_blank" rel="noopener">
+            Baltimore Wharf
+          </a>
+        </td>
+        <td class="num" data-val="76">76</td>
+        <td class="num" data-val="40">40 <span class="pct">(53%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="0">–</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="39">39</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/barbican" target="_blank" rel="noopener">
+            Barbican
+          </a>
+        </td>
+        <td class="num" data-val="95">95</td>
+        <td class="num" data-val="54">54 <span class="pct">(57%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="11">11</td><td class="num" style="background:#ede9fe" data-val="32">32</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="9">9</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="21">21</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/battersea" target="_blank" rel="noopener">
+            Battersea
+          </a>
+        </td>
+        <td class="num" data-val="37">37</td>
+        <td class="num" data-val="22">22 <span class="pct">(59%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="0">–</td><td class="num" style="background:#fed7aa" data-val="6">6</td><td class="num" style="background:#ede9fe" data-val="7">7</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="2">2</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/birmingham-central" target="_blank" rel="noopener">
+            Birmingham Central
+          </a>
+        </td>
+        <td class="num" data-val="68">68</td>
+        <td class="num" data-val="46">46 <span class="pct">(68%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="13">13</td><td class="num" style="background:#fee2e2" data-val="6">6</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="16">16</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/birmingham-rubery" target="_blank" rel="noopener">
+            Birmingham Rubery
+          </a>
+        </td>
+        <td class="num" data-val="102">102</td>
+        <td class="num" data-val="35">35 <span class="pct">(34%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="29">29</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="16">16</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="22">22</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/bishops-stortford" target="_blank" rel="noopener">
+            Bishops Stortford
+          </a>
+        </td>
+        <td class="num" data-val="56">56</td>
+        <td class="num" data-val="31">31 <span class="pct">(55%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="16">16</td><td class="num" style="background:#fee2e2" data-val="0">–</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="16">16</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="7">7</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/bloomsbury" target="_blank" rel="noopener">
+            Bloomsbury
+          </a>
+        </td>
+        <td class="num" data-val="46">46</td>
+        <td class="num" data-val="28">28 <span class="pct">(61%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="2">2</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="9">9</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/bolton" target="_blank" rel="noopener">
+            Bolton
+          </a>
+        </td>
+        <td class="num" data-val="98">98</td>
+        <td class="num" data-val="36">36 <span class="pct">(37%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="36">36</td><td class="num" style="background:#fee2e2" data-val="14">14</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="18">18</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/bridgend" target="_blank" rel="noopener">
+            Bridgend
+          </a>
+        </td>
+        <td class="num" data-val="71">71</td>
+        <td class="num" data-val="38">38 <span class="pct">(54%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="6">6</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="11">11</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/bristol" target="_blank" rel="noopener">
+            Bristol
+          </a>
+        </td>
+        <td class="num" data-val="70">70</td>
+        <td class="num" data-val="27">27 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="20">20</td><td class="num" style="background:#fee2e2" data-val="7">7</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/bristol-north" target="_blank" rel="noopener">
+            Bristol North
+          </a>
+        </td>
+        <td class="num" data-val="106">106</td>
+        <td class="num" data-val="43">43 <span class="pct">(41%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="23">23</td><td class="num" style="background:#ede9fe" data-val="29">29</td><td class="num" style="background:#fee2e2" data-val="9">9</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="18">18</td><td class="num" style="background:#dcfce7" data-val="5">5</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/bromley" target="_blank" rel="noopener">
+            Bromley
+          </a>
+        </td>
+        <td class="num" data-val="149">149</td>
+        <td class="num" data-val="68">68 <span class="pct">(46%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="15">15</td><td class="num" style="background:#fed7aa" data-val="24">24</td><td class="num" style="background:#ede9fe" data-val="43">43</td><td class="num" style="background:#fee2e2" data-val="6">6</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="11">11</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="33">33</td><td class="num" style="background:#dcfce7" data-val="5">5</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/brondesbury-park" target="_blank" rel="noopener">
+            Brondesbury Park
+          </a>
+        </td>
+        <td class="num" data-val="50">50</td>
+        <td class="num" data-val="27">27 <span class="pct">(54%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="16">16</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="3">3</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/cambridge" target="_blank" rel="noopener">
+            Cambridge
+          </a>
+        </td>
+        <td class="num" data-val="136">136</td>
+        <td class="num" data-val="60">60 <span class="pct">(44%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="10">10</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="53">53</td><td class="num" style="background:#fee2e2" data-val="12">12</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="31">31</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/cannock" target="_blank" rel="noopener">
+            Cannock
+          </a>
+        </td>
+        <td class="num" data-val="69">69</td>
+        <td class="num" data-val="27">27 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="17">17</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="7">7</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/cheam" target="_blank" rel="noopener">
+            Cheam
+          </a>
+        </td>
+        <td class="num" data-val="67">67</td>
+        <td class="num" data-val="35">35 <span class="pct">(52%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="10">10</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="0">–</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="4">4</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="17">17</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/chelmsford" target="_blank" rel="noopener">
+            Chelmsford
+          </a>
+        </td>
+        <td class="num" data-val="78">78</td>
+        <td class="num" data-val="42">42 <span class="pct">(54%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="25">25</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="23">23</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/chester" target="_blank" rel="noopener">
+            Chester
+          </a>
+        </td>
+        <td class="num" data-val="71">71</td>
+        <td class="num" data-val="27">27 <span class="pct">(38%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="11">11</td><td class="num" style="background:#ede9fe" data-val="20">20</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="13">13</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="7">7</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/chesterfield" target="_blank" rel="noopener">
+            Chesterfield
+          </a>
+        </td>
+        <td class="num" data-val="87">87</td>
+        <td class="num" data-val="39">39 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="11">11</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="24">24</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="17">17</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/chichester" target="_blank" rel="noopener">
+            Chichester
+          </a>
+        </td>
+        <td class="num" data-val="85">85</td>
+        <td class="num" data-val="34">34 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="31">31</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="14">14</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/chigwell" target="_blank" rel="noopener">
+            Chigwell
+          </a>
+        </td>
+        <td class="num" data-val="69">69</td>
+        <td class="num" data-val="32">32 <span class="pct">(46%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="11">11</td><td class="num" style="background:#ede9fe" data-val="21">21</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="4">4</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/chingford" target="_blank" rel="noopener">
+            Chingford
+          </a>
+        </td>
+        <td class="num" data-val="71">71</td>
+        <td class="num" data-val="28">28 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="22">22</td><td class="num" style="background:#fee2e2" data-val="0">–</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="19">19</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/chislehurst" target="_blank" rel="noopener">
+            Chislehurst
+          </a>
+        </td>
+        <td class="num" data-val="72">72</td>
+        <td class="num" data-val="35">35 <span class="pct">(49%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="10">10</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="20">20</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="18">18</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/city" target="_blank" rel="noopener">
+            City
+          </a>
+        </td>
+        <td class="num" data-val="105">105</td>
+        <td class="num" data-val="51">51 <span class="pct">(49%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="29">29</td><td class="num" style="background:#fee2e2" data-val="10">10</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="13">13</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="24">24</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/cottingley" target="_blank" rel="noopener">
+            Cottingley
+          </a>
+        </td>
+        <td class="num" data-val="88">88</td>
+        <td class="num" data-val="36">36 <span class="pct">(41%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="16">16</td><td class="num" style="background:#fee2e2" data-val="16">16</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/covent-garden" target="_blank" rel="noopener">
+            Covent Garden
+          </a>
+        </td>
+        <td class="num" data-val="31">31</td>
+        <td class="num" data-val="21">21 <span class="pct">(68%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="0">–</td><td class="num" style="background:#fed7aa" data-val="2">2</td><td class="num" style="background:#ede9fe" data-val="12">12</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="3">3</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/crawley" target="_blank" rel="noopener">
+            Crawley
+          </a>
+        </td>
+        <td class="num" data-val="157">157</td>
+        <td class="num" data-val="62">62 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="16">16</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="65">65</td><td class="num" style="background:#fee2e2" data-val="14">14</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="32">32</td><td class="num" style="background:#dcfce7" data-val="6">6</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/croydon" target="_blank" rel="noopener">
+            Croydon
+          </a>
+        </td>
+        <td class="num" data-val="82">82</td>
+        <td class="num" data-val="37">37 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="11">11</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="26">26</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="13">13</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/croydon-central" target="_blank" rel="noopener">
+            Croydon Central
+          </a>
+        </td>
+        <td class="num" data-val="66">66</td>
+        <td class="num" data-val="31">31 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="22">22</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/cwmbran" target="_blank" rel="noopener">
+            Cwmbran
+          </a>
+        </td>
+        <td class="num" data-val="69">69</td>
+        <td class="num" data-val="27">27 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="14">14</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/derby" target="_blank" rel="noopener">
+            Derby
+          </a>
+        </td>
+        <td class="num" data-val="103">103</td>
+        <td class="num" data-val="44">44 <span class="pct">(43%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="15">15</td><td class="num" style="background:#ede9fe" data-val="22">22</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="8">8</td><td class="num" style="background:#d1fae5" data-val="10">10</td><td class="num" style="background:#fce7f3" data-val="7">7</td><td class="num" style="background:#fef9c3" data-val="26">26</td><td class="num" style="background:#dcfce7" data-val="5">5</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/devonshire-plymouth" target="_blank" rel="noopener">
+            Devonshire
+          </a>
+        </td>
+        <td class="num" data-val="105">105</td>
+        <td class="num" data-val="47">47 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="27">27</td><td class="num" style="background:#fee2e2" data-val="7">7</td><td class="num" style="background:#d1d5db" data-val="14">14</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="26">26</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/didsbury" target="_blank" rel="noopener">
+            Didsbury
+          </a>
+        </td>
+        <td class="num" data-val="124">124</td>
+        <td class="num" data-val="55">55 <span class="pct">(44%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="17">17</td><td class="num" style="background:#ede9fe" data-val="32">32</td><td class="num" style="background:#fee2e2" data-val="14">14</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="15">15</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="17">17</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/doncaster" target="_blank" rel="noopener">
+            Doncaster
+          </a>
+        </td>
+        <td class="num" data-val="78">78</td>
+        <td class="num" data-val="35">35 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="17">17</td><td class="num" style="background:#ede9fe" data-val="25">25</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/ealing" target="_blank" rel="noopener">
+            Ealing
+          </a>
+        </td>
+        <td class="num" data-val="72">72</td>
+        <td class="num" data-val="34">34 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="17">17</td><td class="num" style="background:#dcfce7" data-val="3">3</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/east-kilbride" target="_blank" rel="noopener">
+            East Kilbride
+          </a>
+        </td>
+        <td class="num" data-val="95">95</td>
+        <td class="num" data-val="38">38 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="21">21</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="9">9</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="8">8</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/edinburgh" target="_blank" rel="noopener">
+            Edinburgh
+          </a>
+        </td>
+        <td class="num" data-val="88">88</td>
+        <td class="num" data-val="38">38 <span class="pct">(43%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="30">30</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="7">7</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/edinburgh-fountain-park" target="_blank" rel="noopener">
+            Edinburgh Fountain Park
+          </a>
+        </td>
+        <td class="num" data-val="75">75</td>
+        <td class="num" data-val="33">33 <span class="pct">(44%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="6">6</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="10">10</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="30">30</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/edinburgh-omni" target="_blank" rel="noopener">
+            Edinburgh Omni
+          </a>
+        </td>
+        <td class="num" data-val="59">59</td>
+        <td class="num" data-val="24">24 <span class="pct">(41%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="19">19</td><td class="num" style="background:#fee2e2" data-val="6">6</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/enfield" target="_blank" rel="noopener">
+            Enfield
+          </a>
+        </td>
+        <td class="num" data-val="77">77</td>
+        <td class="num" data-val="36">36 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="23">23</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/farnborough" target="_blank" rel="noopener">
+            Farnborough
+          </a>
+        </td>
+        <td class="num" data-val="92">92</td>
+        <td class="num" data-val="33">33 <span class="pct">(36%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="43">43</td><td class="num" style="background:#fee2e2" data-val="10">10</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="11">11</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/farnham" target="_blank" rel="noopener">
+            Farnham
+          </a>
+        </td>
+        <td class="num" data-val="74">74</td>
+        <td class="num" data-val="31">31 <span class="pct">(42%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="10">10</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="32">32</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="11">11</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/friern-barnet" target="_blank" rel="noopener">
+            Friern Barnet
+          </a>
+        </td>
+        <td class="num" data-val="55">55</td>
+        <td class="num" data-val="28">28 <span class="pct">(51%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="19">19</td><td class="num" style="background:#fee2e2" data-val="6">6</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/fulham" target="_blank" rel="noopener">
+            Fulham
+          </a>
+        </td>
+        <td class="num" data-val="37">37</td>
+        <td class="num" data-val="17">17 <span class="pct">(46%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="2">2</td><td class="num" style="background:#ede9fe" data-val="10">10</td><td class="num" style="background:#fee2e2" data-val="7">7</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="2">2</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/glasgow-central" target="_blank" rel="noopener">
+            Glasgow Central
+          </a>
+        </td>
+        <td class="num" data-val="52">52</td>
+        <td class="num" data-val="18">18 <span class="pct">(35%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="6">6</td><td class="num" style="background:#ede9fe" data-val="13">13</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/glasgow-giffnock" target="_blank" rel="noopener">
+            Glasgow Giffnock
+          </a>
+        </td>
+        <td class="num" data-val="97">97</td>
+        <td class="num" data-val="37">37 <span class="pct">(38%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="14">14</td><td class="num" style="background:#ede9fe" data-val="34">34</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="15">15</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/glasgow-west-end" target="_blank" rel="noopener">
+            Glasgow Minerva Way
+          </a>
+        </td>
+        <td class="num" data-val="38">38</td>
+        <td class="num" data-val="17">17 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="0">–</td><td class="num" style="background:#fed7aa" data-val="6">6</td><td class="num" style="background:#ede9fe" data-val="10">10</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="0">–</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/gloucester" target="_blank" rel="noopener">
+            Gloucester
+          </a>
+        </td>
+        <td class="num" data-val="140">140</td>
+        <td class="num" data-val="54">54 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="25">25</td><td class="num" style="background:#ede9fe" data-val="53">53</td><td class="num" style="background:#fee2e2" data-val="13">13</td><td class="num" style="background:#d1d5db" data-val="12">12</td><td class="num" style="background:#d1fae5" data-val="16">16</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="11">11</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/gosforth" target="_blank" rel="noopener">
+            Gosforth
+          </a>
+        </td>
+        <td class="num" data-val="65">65</td>
+        <td class="num" data-val="20">20 <span class="pct">(31%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="16">16</td><td class="num" style="background:#fee2e2" data-val="0">–</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/guildford" target="_blank" rel="noopener">
+            Guildford
+          </a>
+        </td>
+        <td class="num" data-val="77">77</td>
+        <td class="num" data-val="29">29 <span class="pct">(38%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="27">27</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="17">17</td><td class="num" style="background:#dcfce7" data-val="3">3</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/guiseley" target="_blank" rel="noopener">
+            Guiseley
+          </a>
+        </td>
+        <td class="num" data-val="102">102</td>
+        <td class="num" data-val="38">38 <span class="pct">(37%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="22">22</td><td class="num" style="background:#ede9fe" data-val="20">20</td><td class="num" style="background:#fee2e2" data-val="12">12</td><td class="num" style="background:#d1d5db" data-val="10">10</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="23">23</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/harrogate" target="_blank" rel="noopener">
+            Harrogate
+          </a>
+        </td>
+        <td class="num" data-val="83">83</td>
+        <td class="num" data-val="33">33 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="14">14</td><td class="num" style="background:#ede9fe" data-val="25">25</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="7">7</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/hemel-hempstead" target="_blank" rel="noopener">
+            Hemel Hempstead
+          </a>
+        </td>
+        <td class="num" data-val="71">71</td>
+        <td class="num" data-val="30">30 <span class="pct">(42%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="21">21</td><td class="num" style="background:#fee2e2" data-val="10">10</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="4">4</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/hendon" target="_blank" rel="noopener">
+            Hendon
+          </a>
+        </td>
+        <td class="num" data-val="52">52</td>
+        <td class="num" data-val="25">25 <span class="pct">(48%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="19">19</td><td class="num" style="background:#fee2e2" data-val="0">–</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="4">4</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="17">17</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/hertford" target="_blank" rel="noopener">
+            Hertford
+          </a>
+        </td>
+        <td class="num" data-val="89">89</td>
+        <td class="num" data-val="39">39 <span class="pct">(44%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="31">31</td><td class="num" style="background:#fee2e2" data-val="7">7</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="18">18</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/hull" target="_blank" rel="noopener">
+            Hull
+          </a>
+        </td>
+        <td class="num" data-val="60">60</td>
+        <td class="num" data-val="17">17 <span class="pct">(28%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="11">11</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/ilford" target="_blank" rel="noopener">
+            Ilford
+          </a>
+        </td>
+        <td class="num" data-val="44">44</td>
+        <td class="num" data-val="19">19 <span class="pct">(43%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="11">11</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="4">4</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/islington" target="_blank" rel="noopener">
+            Islington
+          </a>
+        </td>
+        <td class="num" data-val="67">67</td>
+        <td class="num" data-val="31">31 <span class="pct">(46%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="14">14</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="10">10</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/kingston" target="_blank" rel="noopener">
+            Kingston
+          </a>
+        </td>
+        <td class="num" data-val="146">146</td>
+        <td class="num" data-val="61">61 <span class="pct">(42%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="27">27</td><td class="num" style="background:#ede9fe" data-val="35">35</td><td class="num" style="background:#fee2e2" data-val="17">17</td><td class="num" style="background:#d1d5db" data-val="8">8</td><td class="num" style="background:#d1fae5" data-val="10">10</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="31">31</td><td class="num" style="background:#dcfce7" data-val="5">5</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/leatherhead" target="_blank" rel="noopener">
+            Leatherhead
+          </a>
+        </td>
+        <td class="num" data-val="49">49</td>
+        <td class="num" data-val="20">20 <span class="pct">(41%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="15">15</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="7">7</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/leeds" target="_blank" rel="noopener">
+            Leeds
+          </a>
+        </td>
+        <td class="num" data-val="46">46</td>
+        <td class="num" data-val="18">18 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="10">10</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="9">9</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/leicester" target="_blank" rel="noopener">
+            Leicester
+          </a>
+        </td>
+        <td class="num" data-val="84">84</td>
+        <td class="num" data-val="32">32 <span class="pct">(38%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="12">12</td><td class="num" style="background:#ede9fe" data-val="27">27</td><td class="num" style="background:#fee2e2" data-val="12">12</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/letchworth-garden-city" target="_blank" rel="noopener">
+            Letchworth
+          </a>
+        </td>
+        <td class="num" data-val="89">89</td>
+        <td class="num" data-val="39">39 <span class="pct">(44%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="24">24</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="26">26</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/liverpool" target="_blank" rel="noopener">
+            Liverpool
+          </a>
+        </td>
+        <td class="num" data-val="61">61</td>
+        <td class="num" data-val="27">27 <span class="pct">(44%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="17">17</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="7">7</td><td class="num" style="background:#dcfce7" data-val="6">6</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/manchester-printworks" target="_blank" rel="noopener">
+            Manchester
+          </a>
+        </td>
+        <td class="num" data-val="43">43</td>
+        <td class="num" data-val="22">22 <span class="pct">(51%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="2">2</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="14">14</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="6">6</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="7">7</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/medway" target="_blank" rel="noopener">
+            Medway
+          </a>
+        </td>
+        <td class="num" data-val="85">85</td>
+        <td class="num" data-val="34">34 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="19">19</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="16">16</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="3">3</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/milngavie" target="_blank" rel="noopener">
+            Milngavie
+          </a>
+        </td>
+        <td class="num" data-val="122">122</td>
+        <td class="num" data-val="47">47 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="53">53</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="10">10</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="18">18</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/milton-keynes" target="_blank" rel="noopener">
+            Milton Keynes
+          </a>
+        </td>
+        <td class="num" data-val="73">73</td>
+        <td class="num" data-val="37">37 <span class="pct">(51%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="15">15</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="4">4</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/moorgate" target="_blank" rel="noopener">
+            Moorgate
+          </a>
+        </td>
+        <td class="num" data-val="56">56</td>
+        <td class="num" data-val="27">27 <span class="pct">(48%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="2">2</td><td class="num" style="background:#fed7aa" data-val="12">12</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="0">–</td><td class="num" style="background:#d1d5db" data-val="8">8</td><td class="num" style="background:#d1fae5" data-val="1">1</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/newbury" target="_blank" rel="noopener">
+            Newbury
+          </a>
+        </td>
+        <td class="num" data-val="63">63</td>
+        <td class="num" data-val="25">25 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="17">17</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/norbury" target="_blank" rel="noopener">
+            Norbury
+          </a>
+        </td>
+        <td class="num" data-val="60">60</td>
+        <td class="num" data-val="30">30 <span class="pct">(50%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="4">4</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="11">11</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/northampton" target="_blank" rel="noopener">
+            Northampton
+          </a>
+        </td>
+        <td class="num" data-val="83">83</td>
+        <td class="num" data-val="40">40 <span class="pct">(48%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="11">11</td><td class="num" style="background:#ede9fe" data-val="15">15</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="9">9</td><td class="num" style="background:#d1fae5" data-val="11">11</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="23">23</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/norwich" target="_blank" rel="noopener">
+            Norwich
+          </a>
+        </td>
+        <td class="num" data-val="101">101</td>
+        <td class="num" data-val="47">47 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="6">6</td><td class="num" style="background:#ede9fe" data-val="40">40</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="25">25</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/nottingham" target="_blank" rel="noopener">
+            Nottingham
+          </a>
+        </td>
+        <td class="num" data-val="82">82</td>
+        <td class="num" data-val="30">30 <span class="pct">(37%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="14">14</td><td class="num" style="background:#ede9fe" data-val="27">27</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/nuneaton" target="_blank" rel="noopener">
+            Nuneaton
+          </a>
+        </td>
+        <td class="num" data-val="86">86</td>
+        <td class="num" data-val="36">36 <span class="pct">(42%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="12">12</td><td class="num" style="background:#fed7aa" data-val="12">12</td><td class="num" style="background:#ede9fe" data-val="19">19</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="8">8</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="19">19</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/oxfordshire" target="_blank" rel="noopener">
+            Oxfordshire
+          </a>
+        </td>
+        <td class="num" data-val="110">110</td>
+        <td class="num" data-val="49">49 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="36">36</td><td class="num" style="background:#fee2e2" data-val="8">8</td><td class="num" style="background:#d1d5db" data-val="16">16</td><td class="num" style="background:#d1fae5" data-val="11">11</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="18">18</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/paddington" target="_blank" rel="noopener">
+            Paddington
+          </a>
+        </td>
+        <td class="num" data-val="51">51</td>
+        <td class="num" data-val="31">31 <span class="pct">(61%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="5">5</td><td class="num" style="background:#ede9fe" data-val="13">13</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="8">8</td><td class="num" style="background:#d1fae5" data-val="3">3</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/plymouth" target="_blank" rel="noopener">
+            Plymouth
+          </a>
+        </td>
+        <td class="num" data-val="69">69</td>
+        <td class="num" data-val="30">30 <span class="pct">(43%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="20">20</td><td class="num" style="background:#fee2e2" data-val="2">2</td><td class="num" style="background:#d1d5db" data-val="9">9</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/portsmouth" target="_blank" rel="noopener">
+            Portsmouth
+          </a>
+        </td>
+        <td class="num" data-val="59">59</td>
+        <td class="num" data-val="20">20 <span class="pct">(34%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="7">7</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="3">3</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/preston" target="_blank" rel="noopener">
+            Preston
+          </a>
+        </td>
+        <td class="num" data-val="88">88</td>
+        <td class="num" data-val="29">29 <span class="pct">(33%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="24">24</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="17">17</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="3">3</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/reading" target="_blank" rel="noopener">
+            Reading
+          </a>
+        </td>
+        <td class="num" data-val="52">52</td>
+        <td class="num" data-val="21">21 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="18">18</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="3">3</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/romford" target="_blank" rel="noopener">
+            Romford
+          </a>
+        </td>
+        <td class="num" data-val="68">68</td>
+        <td class="num" data-val="33">33 <span class="pct">(49%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="14">14</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="8">8</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="21">21</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/rugby" target="_blank" rel="noopener">
+            Rugby
+          </a>
+        </td>
+        <td class="num" data-val="89">89</td>
+        <td class="num" data-val="44">44 <span class="pct">(49%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="21">21</td><td class="num" style="background:#fee2e2" data-val="9">9</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="9">9</td><td class="num" style="background:#fef9c3" data-val="19">19</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/sheffield" target="_blank" rel="noopener">
+            Sheffield
+          </a>
+        </td>
+        <td class="num" data-val="110">110</td>
+        <td class="num" data-val="47">47 <span class="pct">(43%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="16">16</td><td class="num" style="background:#ede9fe" data-val="30">30</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="19">19</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="26">26</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/shipley" target="_blank" rel="noopener">
+            Shipley
+          </a>
+        </td>
+        <td class="num" data-val="72">72</td>
+        <td class="num" data-val="29">29 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="24">24</td><td class="num" style="background:#fee2e2" data-val="8">8</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/shoreditch" target="_blank" rel="noopener">
+            Shoreditch
+          </a>
+        </td>
+        <td class="num" data-val="28">28</td>
+        <td class="num" data-val="18">18 <span class="pct">(64%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="0">–</td><td class="num" style="background:#fed7aa" data-val="2">2</td><td class="num" style="background:#ede9fe" data-val="11">11</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="2">2</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="7">7</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/st-albans" target="_blank" rel="noopener">
+            St Albans
+          </a>
+        </td>
+        <td class="num" data-val="91">91</td>
+        <td class="num" data-val="42">42 <span class="pct">(46%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="12">12</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="27">27</td><td class="num" style="background:#fee2e2" data-val="8">8</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="4">4</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="22">22</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/stockley-park" target="_blank" rel="noopener">
+            Stockley Park
+          </a>
+        </td>
+        <td class="num" data-val="87">87</td>
+        <td class="num" data-val="39">39 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="6">6</td><td class="num" style="background:#ede9fe" data-val="38">38</td><td class="num" style="background:#fee2e2" data-val="11">11</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/stoke-poges" target="_blank" rel="noopener">
+            Stoke Poges
+          </a>
+        </td>
+        <td class="num" data-val="80">80</td>
+        <td class="num" data-val="36">36 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="6">6</td><td class="num" style="background:#ede9fe" data-val="35">35</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="9">9</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/stoke" target="_blank" rel="noopener">
+            Stoke-on-Trent
+          </a>
+        </td>
+        <td class="num" data-val="92">92</td>
+        <td class="num" data-val="31">31 <span class="pct">(34%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="12">12</td><td class="num" style="background:#ede9fe" data-val="21">21</td><td class="num" style="background:#fee2e2" data-val="7">7</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="17">17</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="24">24</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/sunbury" target="_blank" rel="noopener">
+            Sunbury
+          </a>
+        </td>
+        <td class="num" data-val="79">79</td>
+        <td class="num" data-val="37">37 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="13">13</td><td class="num" style="background:#ede9fe" data-val="21">21</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="15">15</td><td class="num" style="background:#dcfce7" data-val="4">4</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/surbiton" target="_blank" rel="noopener">
+            Surbiton
+          </a>
+        </td>
+        <td class="num" data-val="99">99</td>
+        <td class="num" data-val="42">42 <span class="pct">(42%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="18">18</td><td class="num" style="background:#ede9fe" data-val="28">28</td><td class="num" style="background:#fee2e2" data-val="9">9</td><td class="num" style="background:#d1d5db" data-val="4">4</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="20">20</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/swindon" target="_blank" rel="noopener">
+            Swindon
+          </a>
+        </td>
+        <td class="num" data-val="53">53</td>
+        <td class="num" data-val="24">24 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="16">16</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="1">1</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/taunton" target="_blank" rel="noopener">
+            Taunton
+          </a>
+        </td>
+        <td class="num" data-val="97">97</td>
+        <td class="num" data-val="40">40 <span class="pct">(41%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="9">9</td><td class="num" style="background:#fed7aa" data-val="15">15</td><td class="num" style="background:#ede9fe" data-val="22">22</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="27">27</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/telford" target="_blank" rel="noopener">
+            Telford
+          </a>
+        </td>
+        <td class="num" data-val="62">62</td>
+        <td class="num" data-val="24">24 <span class="pct">(39%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="11">11</td><td class="num" style="background:#ede9fe" data-val="17">17</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/tunbridge-wells" target="_blank" rel="noopener">
+            Tunbridge Wells
+          </a>
+        </td>
+        <td class="num" data-val="59">59</td>
+        <td class="num" data-val="27">27 <span class="pct">(46%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="23">23</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="1">1</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="10">10</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/twickenham" target="_blank" rel="noopener">
+            Twickenham
+          </a>
+        </td>
+        <td class="num" data-val="55">55</td>
+        <td class="num" data-val="20">20 <span class="pct">(36%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="30">30</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="3">3</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="8">8</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/wakefield" target="_blank" rel="noopener">
+            Wakefield
+          </a>
+        </td>
+        <td class="num" data-val="83">83</td>
+        <td class="num" data-val="37">37 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="12">12</td><td class="num" style="background:#ede9fe" data-val="20">20</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="10">10</td><td class="num" style="background:#fef9c3" data-val="14">14</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/wandsworth" target="_blank" rel="noopener">
+            Wandsworth
+          </a>
+        </td>
+        <td class="num" data-val="66">66</td>
+        <td class="num" data-val="29">29 <span class="pct">(44%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="5">5</td><td class="num" style="background:#fed7aa" data-val="4">4</td><td class="num" style="background:#ede9fe" data-val="24">24</td><td class="num" style="background:#fee2e2" data-val="3">3</td><td class="num" style="background:#d1d5db" data-val="5">5</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="2">2</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/wandsworth-southside" target="_blank" rel="noopener">
+            Wandsworth Southside
+          </a>
+        </td>
+        <td class="num" data-val="48">48</td>
+        <td class="num" data-val="18">18 <span class="pct">(38%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="8">8</td><td class="num" style="background:#ede9fe" data-val="9">9</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/warwick" target="_blank" rel="noopener">
+            Warwick
+          </a>
+        </td>
+        <td class="num" data-val="104">104</td>
+        <td class="num" data-val="49">49 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="10">10</td><td class="num" style="background:#fed7aa" data-val="16">16</td><td class="num" style="background:#ede9fe" data-val="29">29</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="8">8</td><td class="num" style="background:#d1fae5" data-val="12">12</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="18">18</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/west-byfleet" target="_blank" rel="noopener">
+            West Byfleet
+          </a>
+        </td>
+        <td class="num" data-val="65">65</td>
+        <td class="num" data-val="23">23 <span class="pct">(35%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="24">24</td><td class="num" style="background:#fee2e2" data-val="7">7</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="1">1</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="11">11</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/weston-super-mare" target="_blank" rel="noopener">
+            Weston-Super-Mare
+          </a>
+        </td>
+        <td class="num" data-val="73">73</td>
+        <td class="num" data-val="34">34 <span class="pct">(47%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="7">7</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="21">21</td><td class="num" style="background:#fee2e2" data-val="4">4</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="5">5</td><td class="num" style="background:#fce7f3" data-val="8">8</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/wimbledon" target="_blank" rel="noopener">
+            Wimbledon
+          </a>
+        </td>
+        <td class="num" data-val="96">96</td>
+        <td class="num" data-val="33">33 <span class="pct">(34%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="47">47</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="6">6</td><td class="num" style="background:#fef9c3" data-val="17">17</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/wokingham" target="_blank" rel="noopener">
+            Wokingham
+          </a>
+        </td>
+        <td class="num" data-val="104">104</td>
+        <td class="num" data-val="35">35 <span class="pct">(34%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="3">3</td><td class="num" style="background:#fed7aa" data-val="9">9</td><td class="num" style="background:#ede9fe" data-val="56">56</td><td class="num" style="background:#fee2e2" data-val="8">8</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="9">9</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="12">12</td><td class="num" style="background:#dcfce7" data-val="2">2</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/wolverhampton" target="_blank" rel="noopener">
+            Wolverhampton
+          </a>
+        </td>
+        <td class="num" data-val="75">75</td>
+        <td class="num" data-val="30">30 <span class="pct">(40%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="8">8</td><td class="num" style="background:#fed7aa" data-val="7">7</td><td class="num" style="background:#ede9fe" data-val="24">24</td><td class="num" style="background:#fee2e2" data-val="9">9</td><td class="num" style="background:#d1d5db" data-val="0">–</td><td class="num" style="background:#d1fae5" data-val="7">7</td><td class="num" style="background:#fce7f3" data-val="4">4</td><td class="num" style="background:#fef9c3" data-val="16">16</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/worcester" target="_blank" rel="noopener">
+            Worcester
+          </a>
+        </td>
+        <td class="num" data-val="78">78</td>
+        <td class="num" data-val="35">35 <span class="pct">(45%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="4">4</td><td class="num" style="background:#fed7aa" data-val="6">6</td><td class="num" style="background:#ede9fe" data-val="28">28</td><td class="num" style="background:#fee2e2" data-val="5">5</td><td class="num" style="background:#d1d5db" data-val="2">2</td><td class="num" style="background:#d1fae5" data-val="11">11</td><td class="num" style="background:#fce7f3" data-val="5">5</td><td class="num" style="background:#fef9c3" data-val="17">17</td><td class="num" style="background:#dcfce7" data-val="0">–</td>
+      </tr>
+
+      <tr>
+        <td class="gym-name">
+          <a href="https://www.nuffieldhealth.com/gyms/yeovil" target="_blank" rel="noopener">
+            Yeovil
+          </a>
+        </td>
+        <td class="num" data-val="58">58</td>
+        <td class="num" data-val="21">21 <span class="pct">(36%)</span></td>
+        <td class="num" data-val="0">–</td>
+        <td class="num" style="background:#dbeafe" data-val="6">6</td><td class="num" style="background:#fed7aa" data-val="10">10</td><td class="num" style="background:#ede9fe" data-val="15">15</td><td class="num" style="background:#fee2e2" data-val="1">1</td><td class="num" style="background:#d1d5db" data-val="3">3</td><td class="num" style="background:#d1fae5" data-val="6">6</td><td class="num" style="background:#fce7f3" data-val="3">3</td><td class="num" style="background:#fef9c3" data-val="13">13</td><td class="num" style="background:#dcfce7" data-val="1">1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <p>
+    Data sourced from
+    <a href="https://www.nuffieldhealth.com/gyms" target="_blank" rel="noopener">
+      nuffieldhealth.com</a>.
+    Refreshed automatically every Monday via GitHub Actions.
+  </p>
+</footer>
+
+<script>
+(function () {
+  const table   = document.getElementById("report");
+  const tbody   = table.querySelector("tbody");
+  const headers = table.querySelectorAll("th.sortable");
+
+  let sortCol = null, sortDir = 1;
+
+  headers.forEach((th, i) => {
+    th.addEventListener("click", () => {
+      const col = th.dataset.col;
+      if (sortCol === col) { sortDir *= -1; }
+      else { sortCol = col; sortDir = 1; }
+
+      headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
+      th.classList.add(sortDir === 1 ? "sort-asc" : "sort-desc");
+
+      const rows = [...tbody.querySelectorAll("tr")];
+      rows.sort((a, b) => {
+        let av, bv;
+        if (col === "name") {
+          av = a.querySelector(".gym-name").textContent.trim().toLowerCase();
+          bv = b.querySelector(".gym-name").textContent.trim().toLowerCase();
+          return sortDir * av.localeCompare(bv);
+        }
+        const cells = a.querySelectorAll("td");
+        const idx   = [...headers].indexOf(th);
+        av = parseFloat(a.querySelectorAll("td")[idx].dataset.val) || 0;
+        bv = parseFloat(b.querySelectorAll("td")[idx].dataset.val) || 0;
+        return sortDir * (bv - av);   // numeric: high first by default
+      });
+      rows.forEach(r => tbody.appendChild(r));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

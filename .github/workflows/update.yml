@@ -1,0 +1,38 @@
+name: Update Class Schedule Report
+
+on:
+  schedule:
+    # Every Monday at 07:00 UTC (08:00 BST / 07:00 GMT) — classes for the coming week
+    - cron: "0 7 * * 1"
+  workflow_dispatch:   # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper and build report
+        run: python build.py
+
+      - name: Commit and push updated report
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html data/
+          git diff --cached --quiet || git commit -m "chore: update class schedule report $(date -u '+%Y-%m-%d')"
+          git push
