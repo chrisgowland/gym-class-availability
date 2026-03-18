@@ -1,0 +1,2228 @@
+{
+  "week_start": "2026-03-16",
+  "week_end": "2026-03-22",
+  "gyms": [
+    {
+      "slug": "aberdeen",
+      "name": "Aberdeen",
+      "sfid": "a2T4J000001JJdcUAG",
+      "stats": {
+        "total": 85,
+        "off_peak_weekday": 33,
+        "weekend": 13,
+        "categories": {
+          "Tone": 18,
+          "Cycle": 13,
+          "Balance": 24,
+          "HIIT": 4,
+          "Cardio": 15,
+          "Dance": 6,
+          "Athletic": 3,
+          "swim": 2
+        }
+      }
+    },
+    {
+      "slug": "aylesbury",
+      "name": "Aylesbury",
+      "sfid": "a2T4J000001JJctUAG",
+      "stats": {
+        "total": 99,
+        "off_peak_weekday": 38,
+        "weekend": 13,
+        "categories": {
+          "Tone": 23,
+          "Cardio": 14,
+          "Balance": 31,
+          "Cycle": 14,
+          "swim": 5,
+          "Athletic": 3,
+          "Dance": 8,
+          "HIIT": 1
+        }
+      }
+    },
+    {
+      "slug": "baltimore-wharf",
+      "name": "Baltimore Wharf",
+      "sfid": "a2T4J000001JJgMUAW",
+      "stats": {
+        "total": 110,
+        "off_peak_weekday": 49,
+        "weekend": 20,
+        "categories": {
+          "Cardio": 14,
+          "Balance": 57,
+          "Tone": 14,
+          "HIIT": 3,
+          "Cycle": 10,
+          "Athletic": 1,
+          "Dance": 11
+        }
+      }
+    },
+    {
+      "slug": "barbican",
+      "name": "Barbican",
+      "sfid": "a2T4J000001JJdrUAG",
+      "stats": {
+        "total": 125,
+        "off_peak_weekday": 61,
+        "weekend": 16,
+        "categories": {
+          "Athletic": 11,
+          "Tone": 26,
+          "Cycle": 14,
+          "Cardio": 16,
+          "Balance": 44,
+          "Dance": 5,
+          "HIIT": 5,
+          "swim": 4
+        }
+      }
+    },
+    {
+      "slug": "battersea",
+      "name": "Battersea",
+      "sfid": "a2T4J000001JJcoUAG",
+      "stats": {
+        "total": 57,
+        "off_peak_weekday": 25,
+        "weekend": 13,
+        "categories": {
+          "Cardio": 4,
+          "Tone": 21,
+          "Balance": 12,
+          "Cycle": 9,
+          "HIIT": 6,
+          "Dance": 4,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "birmingham-central",
+      "name": "Birmingham Central",
+      "sfid": "a2T4J000001JJd3UAG",
+      "stats": {
+        "total": 103,
+        "off_peak_weekday": 54,
+        "weekend": 22,
+        "categories": {
+          "Cardio": 26,
+          "Cycle": 11,
+          "Tone": 22,
+          "swim": 7,
+          "Balance": 19,
+          "HIIT": 8,
+          "Athletic": 6,
+          "Dance": 4
+        }
+      }
+    },
+    {
+      "slug": "birmingham-rubery",
+      "name": "Birmingham Rubery",
+      "sfid": "a2T4J000001JJd8UAG",
+      "stats": {
+        "total": 141,
+        "off_peak_weekday": 38,
+        "weekend": 20,
+        "categories": {
+          "Cycle": 16,
+          "Balance": 35,
+          "Tone": 29,
+          "HIIT": 7,
+          "Dance": 11,
+          "swim": 12,
+          "Cardio": 26,
+          "Athletic": 5
+        }
+      }
+    },
+    {
+      "slug": "bishops-stortford",
+      "name": "Bishops Stortford",
+      "sfid": "a2T4J000001JJdIUAW",
+      "stats": {
+        "total": 86,
+        "off_peak_weekday": 37,
+        "weekend": 17,
+        "categories": {
+          "Cycle": 12,
+          "Cardio": 26,
+          "Tone": 12,
+          "Dance": 5,
+          "swim": 6,
+          "Balance": 23,
+          "Athletic": 1,
+          "Junior": 1
+        }
+      }
+    },
+    {
+      "slug": "bloomsbury",
+      "name": "Bloomsbury",
+      "sfid": "a2T4J000001JJdXUAW",
+      "stats": {
+        "total": 66,
+        "off_peak_weekday": 31,
+        "weekend": 13,
+        "categories": {
+          "HIIT": 3,
+          "Balance": 13,
+          "Tone": 21,
+          "swim": 4,
+          "Dance": 5,
+          "Cardio": 10,
+          "Cycle": 5,
+          "Athletic": 5
+        }
+      }
+    },
+    {
+      "slug": "bolton",
+      "name": "Bolton",
+      "sfid": "a2T4J000001JJdmUAG",
+      "stats": {
+        "total": 133,
+        "off_peak_weekday": 42,
+        "weekend": 16,
+        "categories": {
+          "Balance": 45,
+          "HIIT": 22,
+          "Cardio": 13,
+          "Cycle": 14,
+          "Tone": 25,
+          "Dance": 5,
+          "swim": 6,
+          "Junior": 2,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "bridgend",
+      "name": "Bridgend",
+      "sfid": "a2T4J000001JJdwUAG",
+      "stats": {
+        "total": 100,
+        "off_peak_weekday": 44,
+        "weekend": 15,
+        "categories": {
+          "Cycle": 15,
+          "HIIT": 7,
+          "Cardio": 16,
+          "Balance": 26,
+          "Tone": 21,
+          "Dance": 7,
+          "swim": 6,
+          "Athletic": 2
+        }
+      }
+    },
+    {
+      "slug": "bristol",
+      "name": "Bristol",
+      "sfid": "a2T4J000001JJdDUAW",
+      "stats": {
+        "total": 100,
+        "off_peak_weekday": 32,
+        "weekend": 14,
+        "categories": {
+          "HIIT": 12,
+          "Balance": 27,
+          "Cycle": 19,
+          "Tone": 22,
+          "Dance": 3,
+          "swim": 4,
+          "Athletic": 1,
+          "Cardio": 12
+        }
+      }
+    },
+    {
+      "slug": "bristol-north",
+      "name": "Bristol North",
+      "sfid": "a2T4J000001JJdNUAW",
+      "stats": {
+        "total": 160,
+        "off_peak_weekday": 51,
+        "weekend": 31,
+        "categories": {
+          "HIIT": 16,
+          "Cycle": 38,
+          "Cardio": 13,
+          "Balance": 45,
+          "Tone": 28,
+          "swim": 5,
+          "Junior": 6,
+          "Dance": 6,
+          "Athletic": 3
+        }
+      }
+    },
+    {
+      "slug": "bromley",
+      "name": "Bromley",
+      "sfid": "a2T4J000001JJdSUAW",
+      "stats": {
+        "total": 226,
+        "off_peak_weekday": 80,
+        "weekend": 45,
+        "categories": {
+          "Cycle": 39,
+          "Tone": 45,
+          "Balance": 69,
+          "Cardio": 18,
+          "swim": 21,
+          "Dance": 14,
+          "HIIT": 8,
+          "Junior": 8,
+          "Athletic": 4
+        }
+      }
+    },
+    {
+      "slug": "brondesbury-park",
+      "name": "Brondesbury Park",
+      "sfid": "a2T4J000001JJdhUAG",
+      "stats": {
+        "total": 75,
+        "off_peak_weekday": 31,
+        "weekend": 16,
+        "categories": {
+          "HIIT": 4,
+          "Tone": 19,
+          "Cycle": 7,
+          "Balance": 24,
+          "Athletic": 3,
+          "swim": 6,
+          "Dance": 6,
+          "Cardio": 6
+        }
+      }
+    },
+    {
+      "slug": "cambridge",
+      "name": "Cambridge",
+      "sfid": "a2T4J000001JJgWUAW",
+      "stats": {
+        "total": 199,
+        "off_peak_weekday": 71,
+        "weekend": 39,
+        "categories": {
+          "Cycle": 20,
+          "HIIT": 16,
+          "Balance": 71,
+          "Tone": 49,
+          "swim": 15,
+          "Cardio": 13,
+          "Dance": 12,
+          "Athletic": 3
+        }
+      }
+    },
+    {
+      "slug": "cannock",
+      "name": "Cannock",
+      "sfid": "a2T4J000001JJgbUAG",
+      "stats": {
+        "total": 92,
+        "off_peak_weekday": 33,
+        "weekend": 10,
+        "categories": {
+          "HIIT": 7,
+          "Athletic": 6,
+          "Cardio": 11,
+          "Dance": 6,
+          "swim": 13,
+          "Cycle": 8,
+          "Balance": 22,
+          "Tone": 19
+        }
+      }
+    },
+    {
+      "slug": "cheam",
+      "name": "Cheam",
+      "sfid": "a2T4J000001JJfOUAW",
+      "stats": {
+        "total": 99,
+        "off_peak_weekday": 40,
+        "weekend": 19,
+        "categories": {
+          "Cycle": 9,
+          "Balance": 28,
+          "swim": 14,
+          "Tone": 24,
+          "Cardio": 9,
+          "Athletic": 6,
+          "Dance": 7,
+          "Junior": 2
+        }
+      }
+    },
+    {
+      "slug": "chelmsford",
+      "name": "Chelmsford",
+      "sfid": "a2T4J000001JJfTUAW",
+      "stats": {
+        "total": 111,
+        "off_peak_weekday": 48,
+        "weekend": 19,
+        "categories": {
+          "Tone": 32,
+          "Cycle": 14,
+          "Balance": 37,
+          "Cardio": 11,
+          "swim": 8,
+          "Dance": 5,
+          "Athletic": 2,
+          "HIIT": 2
+        }
+      }
+    },
+    {
+      "slug": "chester",
+      "name": "Chester",
+      "sfid": "a2T4J000001JJfYUAW",
+      "stats": {
+        "total": 107,
+        "off_peak_weekday": 33,
+        "weekend": 19,
+        "categories": {
+          "HIIT": 5,
+          "Tone": 21,
+          "Cardio": 15,
+          "Cycle": 18,
+          "swim": 8,
+          "Balance": 25,
+          "Junior": 11,
+          "Athletic": 1,
+          "Dance": 3
+        }
+      }
+    },
+    {
+      "slug": "chesterfield",
+      "name": "Chesterfield",
+      "sfid": "a2T4J000001JJfJUAW",
+      "stats": {
+        "total": 124,
+        "off_peak_weekday": 46,
+        "weekend": 19,
+        "categories": {
+          "HIIT": 5,
+          "Balance": 34,
+          "Tone": 23,
+          "Cycle": 13,
+          "swim": 13,
+          "Cardio": 25,
+          "Dance": 8,
+          "Athletic": 2,
+          "Junior": 1
+        }
+      }
+    },
+    {
+      "slug": "chichester",
+      "name": "Chichester",
+      "sfid": "a2T4J000001JJfEUAW",
+      "stats": {
+        "total": 120,
+        "off_peak_weekday": 40,
+        "weekend": 15,
+        "categories": {
+          "Cycle": 11,
+          "Tone": 24,
+          "Balance": 42,
+          "Cardio": 18,
+          "swim": 10,
+          "HIIT": 2,
+          "Dance": 12,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "chigwell",
+      "name": "Chigwell",
+      "sfid": "a2T4J000001JJfiUAG",
+      "stats": {
+        "total": 101,
+        "off_peak_weekday": 38,
+        "weekend": 16,
+        "categories": {
+          "Tone": 27,
+          "HIIT": 3,
+          "Cycle": 16,
+          "Balance": 31,
+          "Dance": 4,
+          "swim": 7,
+          "Cardio": 11,
+          "Athletic": 2
+        }
+      }
+    },
+    {
+      "slug": "chingford",
+      "name": "Chingford",
+      "sfid": "a2T4J000001JJfsUAG",
+      "stats": {
+        "total": 106,
+        "off_peak_weekday": 32,
+        "weekend": 19,
+        "categories": {
+          "Cycle": 13,
+          "Cardio": 14,
+          "Balance": 32,
+          "Dance": 3,
+          "Tone": 26,
+          "swim": 11,
+          "Athletic": 3,
+          "Junior": 3,
+          "HIIT": 1
+        }
+      }
+    },
+    {
+      "slug": "chislehurst",
+      "name": "Chislehurst",
+      "sfid": "a2T4J000001JJg2UAG",
+      "stats": {
+        "total": 115,
+        "off_peak_weekday": 43,
+        "weekend": 28,
+        "categories": {
+          "Balance": 34,
+          "Tone": 25,
+          "swim": 14,
+          "Cycle": 17,
+          "HIIT": 7,
+          "Cardio": 16,
+          "Dance": 2
+        }
+      }
+    },
+    {
+      "slug": "city",
+      "name": "City",
+      "sfid": "a2T4J000001JJgCUAW",
+      "stats": {
+        "total": 131,
+        "off_peak_weekday": 56,
+        "weekend": 14,
+        "categories": {
+          "swim": 10,
+          "Balance": 39,
+          "Athletic": 5,
+          "Cycle": 14,
+          "Tone": 31,
+          "HIIT": 11,
+          "Cardio": 15,
+          "Dance": 6
+        }
+      }
+    },
+    {
+      "slug": "cottingley",
+      "name": "Cottingley",
+      "sfid": "a2T4J000001JJfdUAG",
+      "stats": {
+        "total": 133,
+        "off_peak_weekday": 43,
+        "weekend": 23,
+        "categories": {
+          "HIIT": 23,
+          "Cycle": 22,
+          "Dance": 10,
+          "Tone": 17,
+          "swim": 9,
+          "Cardio": 20,
+          "Athletic": 7,
+          "Balance": 22,
+          "Junior": 3
+        }
+      }
+    },
+    {
+      "slug": "covent-garden",
+      "name": "Covent Garden",
+      "sfid": "a2T4J000001JJcaUAG",
+      "stats": {
+        "total": 44,
+        "off_peak_weekday": 23,
+        "weekend": 8,
+        "categories": {
+          "Tone": 11,
+          "Balance": 18,
+          "Athletic": 3,
+          "Cardio": 4,
+          "Dance": 3,
+          "Cycle": 4,
+          "HIIT": 1
+        }
+      }
+    },
+    {
+      "slug": "crawley",
+      "name": "Crawley",
+      "sfid": "a2T4J000001JJfnUAG",
+      "stats": {
+        "total": 229,
+        "off_peak_weekday": 74,
+        "weekend": 45,
+        "categories": {
+          "HIIT": 20,
+          "Cycle": 19,
+          "Balance": 100,
+          "Tone": 39,
+          "Junior": 9,
+          "swim": 19,
+          "Dance": 10,
+          "Cardio": 10,
+          "Athletic": 3
+        }
+      }
+    },
+    {
+      "slug": "croydon",
+      "name": "Croydon",
+      "sfid": "a2T4J000001JJg7UAG",
+      "stats": {
+        "total": 115,
+        "off_peak_weekday": 44,
+        "weekend": 16,
+        "categories": {
+          "Cycle": 14,
+          "Balance": 37,
+          "Tone": 20,
+          "swim": 15,
+          "Cardio": 18,
+          "Dance": 8,
+          "HIIT": 2,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "croydon-central",
+      "name": "Croydon Central",
+      "sfid": "a2T4J000001JJgHUAW",
+      "stats": {
+        "total": 94,
+        "off_peak_weekday": 35,
+        "weekend": 17,
+        "categories": {
+          "Balance": 34,
+          "Cycle": 11,
+          "Cardio": 9,
+          "Tone": 21,
+          "swim": 11,
+          "Athletic": 1,
+          "HIIT": 1,
+          "Dance": 6
+        }
+      }
+    },
+    {
+      "slug": "cwmbran",
+      "name": "Cwmbran",
+      "sfid": "a2T4J000001JJgRUAW",
+      "stats": {
+        "total": 106,
+        "off_peak_weekday": 33,
+        "weekend": 18,
+        "categories": {
+          "Cycle": 14,
+          "HIIT": 5,
+          "Tone": 21,
+          "Cardio": 24,
+          "Balance": 19,
+          "Dance": 8,
+          "swim": 9,
+          "Junior": 3,
+          "Athletic": 3
+        }
+      }
+    },
+    {
+      "slug": "derby",
+      "name": "Derby",
+      "sfid": "a2T4J000001JJc1UAG",
+      "stats": {
+        "total": 151,
+        "off_peak_weekday": 50,
+        "weekend": 26,
+        "categories": {
+          "Cycle": 21,
+          "Tone": 39,
+          "Dance": 10,
+          "Balance": 33,
+          "Athletic": 10,
+          "swim": 12,
+          "Cardio": 14,
+          "Junior": 10,
+          "HIIT": 2
+        }
+      }
+    },
+    {
+      "slug": "devonshire-plymouth",
+      "name": "Devonshire",
+      "sfid": "a2T4J000001JJhAUAW",
+      "stats": {
+        "total": 150,
+        "off_peak_weekday": 57,
+        "weekend": 23,
+        "categories": {
+          "Tone": 40,
+          "Balance": 36,
+          "Cycle": 15,
+          "HIIT": 10,
+          "Cardio": 13,
+          "Athletic": 19,
+          "swim": 11,
+          "Dance": 6
+        }
+      }
+    },
+    {
+      "slug": "didsbury",
+      "name": "Didsbury",
+      "sfid": "a2T4J000001JJglUAG",
+      "stats": {
+        "total": 178,
+        "off_peak_weekday": 63,
+        "weekend": 27,
+        "categories": {
+          "HIIT": 19,
+          "Balance": 44,
+          "Cycle": 29,
+          "Tone": 21,
+          "Junior": 22,
+          "swim": 9,
+          "Dance": 4,
+          "Cardio": 19,
+          "Athletic": 11
+        }
+      }
+    },
+    {
+      "slug": "doncaster",
+      "name": "Doncaster",
+      "sfid": "a2T4J000001JJc2UAG",
+      "stats": {
+        "total": 110,
+        "off_peak_weekday": 42,
+        "weekend": 15,
+        "categories": {
+          "Cycle": 23,
+          "Tone": 23,
+          "Balance": 32,
+          "Cardio": 13,
+          "swim": 7,
+          "HIIT": 6,
+          "Dance": 3,
+          "Athletic": 3
+        }
+      }
+    },
+    {
+      "slug": "ealing",
+      "name": "Ealing",
+      "sfid": "a2T4J000001JJhPUAW",
+      "stats": {
+        "total": 116,
+        "off_peak_weekday": 40,
+        "weekend": 28,
+        "categories": {
+          "Cycle": 16,
+          "Tone": 26,
+          "Dance": 8,
+          "HIIT": 8,
+          "Balance": 29,
+          "swim": 8,
+          "Junior": 4,
+          "Cardio": 12,
+          "Athletic": 5
+        }
+      }
+    },
+    {
+      "slug": "east-kilbride",
+      "name": "East Kilbride",
+      "sfid": "a2T4J000001JJh0UAG",
+      "stats": {
+        "total": 138,
+        "off_peak_weekday": 41,
+        "weekend": 23,
+        "categories": {
+          "Balance": 31,
+          "Cycle": 18,
+          "Tone": 29,
+          "Cardio": 20,
+          "Dance": 11,
+          "Junior": 11,
+          "Athletic": 2,
+          "HIIT": 10,
+          "swim": 6
+        }
+      }
+    },
+    {
+      "slug": "edinburgh",
+      "name": "Edinburgh",
+      "sfid": "a2T4J000001JJh5UAG",
+      "stats": {
+        "total": 125,
+        "off_peak_weekday": 42,
+        "weekend": 23,
+        "categories": {
+          "Tone": 21,
+          "HIIT": 8,
+          "Balance": 42,
+          "Cycle": 12,
+          "Dance": 9,
+          "swim": 9,
+          "Cardio": 16,
+          "Athletic": 4,
+          "Junior": 4
+        }
+      }
+    },
+    {
+      "slug": "edinburgh-fountain-park",
+      "name": "Edinburgh Fountain Park",
+      "sfid": "a2T4J000001JJgqUAG",
+      "stats": {
+        "total": 109,
+        "off_peak_weekday": 39,
+        "weekend": 15,
+        "categories": {
+          "Cycle": 9,
+          "HIIT": 7,
+          "Tone": 41,
+          "Balance": 26,
+          "Cardio": 16,
+          "swim": 4,
+          "Dance": 5,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "edinburgh-omni",
+      "name": "Edinburgh Omni",
+      "sfid": "a2T4J000001JJggUAG",
+      "stats": {
+        "total": 93,
+        "off_peak_weekday": 33,
+        "weekend": 12,
+        "categories": {
+          "Cardio": 14,
+          "Balance": 30,
+          "swim": 5,
+          "Tone": 20,
+          "Cycle": 9,
+          "Dance": 5,
+          "Athletic": 2,
+          "HIIT": 8
+        }
+      }
+    },
+    {
+      "slug": "enfield",
+      "name": "Enfield",
+      "sfid": "a2T4J000001JJdnUAG",
+      "stats": {
+        "total": 119,
+        "off_peak_weekday": 43,
+        "weekend": 25,
+        "categories": {
+          "Tone": 24,
+          "Cardio": 36,
+          "Balance": 27,
+          "swim": 7,
+          "Cycle": 12,
+          "HIIT": 7,
+          "Dance": 5,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "farnborough",
+      "name": "Farnborough",
+      "sfid": "a2T4J000001JJhFUAW",
+      "stats": {
+        "total": 129,
+        "off_peak_weekday": 36,
+        "weekend": 18,
+        "categories": {
+          "HIIT": 13,
+          "Balance": 62,
+          "Tone": 17,
+          "swim": 8,
+          "Cycle": 11,
+          "Dance": 8,
+          "Cardio": 10
+        }
+      }
+    },
+    {
+      "slug": "farnham",
+      "name": "Farnham",
+      "sfid": "a2T4J000001JJhKUAW",
+      "stats": {
+        "total": 104,
+        "off_peak_weekday": 37,
+        "weekend": 14,
+        "categories": {
+          "HIIT": 2,
+          "Balance": 42,
+          "Cardio": 13,
+          "Tone": 18,
+          "swim": 13,
+          "Cycle": 13,
+          "Dance": 3
+        }
+      }
+    },
+    {
+      "slug": "friern-barnet",
+      "name": "Friern Barnet",
+      "sfid": "a2T4J000001JJgvUAG",
+      "stats": {
+        "total": 82,
+        "off_peak_weekday": 33,
+        "weekend": 15,
+        "categories": {
+          "Balance": 27,
+          "Cardio": 12,
+          "Tone": 16,
+          "Cycle": 7,
+          "HIIT": 8,
+          "swim": 7,
+          "Dance": 5
+        }
+      }
+    },
+    {
+      "slug": "fulham",
+      "name": "Fulham",
+      "sfid": "a2T4J000001JJhUUAW",
+      "stats": {
+        "total": 60,
+        "off_peak_weekday": 20,
+        "weekend": 14,
+        "categories": {
+          "Tone": 17,
+          "Balance": 16,
+          "HIIT": 10,
+          "Cycle": 2,
+          "swim": 4,
+          "Dance": 5,
+          "Cardio": 5,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "glasgow-central",
+      "name": "Glasgow Central",
+      "sfid": "a2T4J000001JJhtUAG",
+      "stats": {
+        "total": 74,
+        "off_peak_weekday": 21,
+        "weekend": 11,
+        "categories": {
+          "HIIT": 5,
+          "Tone": 18,
+          "Balance": 18,
+          "swim": 7,
+          "Cardio": 10,
+          "Cycle": 9,
+          "Junior": 1,
+          "Dance": 5,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "glasgow-giffnock",
+      "name": "Glasgow Giffnock",
+      "sfid": "a2T4J000001JJhyUAG",
+      "stats": {
+        "total": 138,
+        "off_peak_weekday": 45,
+        "weekend": 19,
+        "categories": {
+          "Cardio": 25,
+          "Cycle": 19,
+          "Balance": 47,
+          "Athletic": 4,
+          "Tone": 21,
+          "swim": 7,
+          "Dance": 11,
+          "Junior": 2,
+          "HIIT": 2
+        }
+      }
+    },
+    {
+      "slug": "glasgow-west-end",
+      "name": "Glasgow Minerva Way",
+      "sfid": "a2T4J000001JJi8UAG",
+      "stats": {
+        "total": 58,
+        "off_peak_weekday": 21,
+        "weekend": 10,
+        "categories": {
+          "Cycle": 9,
+          "Cardio": 12,
+          "Tone": 14,
+          "Balance": 18,
+          "Athletic": 4,
+          "HIIT": 1
+        }
+      }
+    },
+    {
+      "slug": "gloucester",
+      "name": "Gloucester",
+      "sfid": "a2T4J000001JJhjUAG",
+      "stats": {
+        "total": 189,
+        "off_peak_weekday": 62,
+        "weekend": 25,
+        "categories": {
+          "Cycle": 40,
+          "HIIT": 18,
+          "Balance": 70,
+          "Cardio": 20,
+          "Athletic": 13,
+          "swim": 8,
+          "Tone": 12,
+          "Dance": 5,
+          "Junior": 3
+        }
+      }
+    },
+    {
+      "slug": "gosforth",
+      "name": "Gosforth",
+      "sfid": "a2T4J000001JJhoUAG",
+      "stats": {
+        "total": 93,
+        "off_peak_weekday": 25,
+        "weekend": 16,
+        "categories": {
+          "Tone": 25,
+          "Balance": 25,
+          "swim": 9,
+          "Cardio": 6,
+          "Cycle": 12,
+          "Dance": 7,
+          "Athletic": 7,
+          "HIIT": 2
+        }
+      }
+    },
+    {
+      "slug": "guildford",
+      "name": "Guildford",
+      "sfid": "a2T4J000001JJiIUAW",
+      "stats": {
+        "total": 101,
+        "off_peak_weekday": 32,
+        "weekend": 15,
+        "categories": {
+          "HIIT": 8,
+          "Balance": 31,
+          "Dance": 6,
+          "Cycle": 9,
+          "Athletic": 3,
+          "swim": 12,
+          "Tone": 23,
+          "Junior": 3,
+          "Cardio": 6
+        }
+      }
+    },
+    {
+      "slug": "guiseley",
+      "name": "Guiseley",
+      "sfid": "a2T4J000001JJiNUAW",
+      "stats": {
+        "total": 148,
+        "off_peak_weekday": 44,
+        "weekend": 23,
+        "categories": {
+          "HIIT": 17,
+          "Cycle": 36,
+          "Tone": 26,
+          "Dance": 6,
+          "Athletic": 17,
+          "swim": 8,
+          "Cardio": 7,
+          "Balance": 31
+        }
+      }
+    },
+    {
+      "slug": "harrogate",
+      "name": "Harrogate",
+      "sfid": "a2T4J000001JJhZUAW",
+      "stats": {
+        "total": 119,
+        "off_peak_weekday": 37,
+        "weekend": 19,
+        "categories": {
+          "Cycle": 20,
+          "HIIT": 7,
+          "Balance": 34,
+          "Athletic": 10,
+          "Cardio": 8,
+          "Tone": 28,
+          "Junior": 4,
+          "swim": 5,
+          "Dance": 3
+        }
+      }
+    },
+    {
+      "slug": "hemel-hempstead",
+      "name": "Hemel Hempstead",
+      "sfid": "a2T4J000001JJiSUAW",
+      "stats": {
+        "total": 110,
+        "off_peak_weekday": 36,
+        "weekend": 23,
+        "categories": {
+          "HIIT": 14,
+          "Tone": 30,
+          "Balance": 32,
+          "swim": 7,
+          "Athletic": 3,
+          "Junior": 5,
+          "Cycle": 8,
+          "Cardio": 7,
+          "Dance": 4
+        }
+      }
+    },
+    {
+      "slug": "hendon",
+      "name": "Hendon",
+      "sfid": "a2T4J000001JJiXUAW",
+      "stats": {
+        "total": 80,
+        "off_peak_weekday": 29,
+        "weekend": 17,
+        "categories": {
+          "Balance": 28,
+          "Tone": 24,
+          "Cardio": 6,
+          "swim": 5,
+          "Cycle": 7,
+          "Dance": 7,
+          "Athletic": 1,
+          "HIIT": 2
+        }
+      }
+    },
+    {
+      "slug": "hertford",
+      "name": "Hertford",
+      "sfid": "a2T4J000001JJicUAG",
+      "stats": {
+        "total": 130,
+        "off_peak_weekday": 46,
+        "weekend": 23,
+        "categories": {
+          "Cycle": 16,
+          "Cardio": 16,
+          "HIIT": 10,
+          "Tone": 29,
+          "Balance": 41,
+          "swim": 11,
+          "Athletic": 3,
+          "Junior": 2,
+          "Dance": 2
+        }
+      }
+    },
+    {
+      "slug": "hull",
+      "name": "Hull",
+      "sfid": "a2T4J000001JJi3UAG",
+      "stats": {
+        "total": 80,
+        "off_peak_weekday": 23,
+        "weekend": 9,
+        "categories": {
+          "Cycle": 10,
+          "Cardio": 11,
+          "Athletic": 3,
+          "Tone": 18,
+          "Balance": 26,
+          "Dance": 5,
+          "HIIT": 3,
+          "swim": 4
+        }
+      }
+    },
+    {
+      "slug": "ilford",
+      "name": "Ilford",
+      "sfid": "a2T4J000001JJheUAG",
+      "stats": {
+        "total": 66,
+        "off_peak_weekday": 23,
+        "weekend": 9,
+        "categories": {
+          "Cardio": 6,
+          "Tone": 19,
+          "swim": 6,
+          "Balance": 16,
+          "HIIT": 6,
+          "Dance": 3,
+          "Cycle": 7,
+          "Athletic": 3
+        }
+      }
+    },
+    {
+      "slug": "islington",
+      "name": "Islington",
+      "sfid": "a2T4J000001JJiDUAW",
+      "stats": {
+        "total": 81,
+        "off_peak_weekday": 29,
+        "weekend": 17,
+        "categories": {
+          "Tone": 20,
+          "HIIT": 5,
+          "Cardio": 8,
+          "Cycle": 11,
+          "Balance": 20,
+          "swim": 8,
+          "Athletic": 4,
+          "Dance": 5
+        }
+      }
+    },
+    {
+      "slug": "kingston",
+      "name": "Kingston",
+      "sfid": "a2T4J000001JJaTUAW",
+      "stats": {
+        "total": 218,
+        "off_peak_weekday": 71,
+        "weekend": 39,
+        "categories": {
+          "HIIT": 23,
+          "Cycle": 44,
+          "Tone": 42,
+          "Cardio": 20,
+          "Balance": 52,
+          "Athletic": 11,
+          "swim": 10,
+          "Junior": 8,
+          "Dance": 8
+        }
+      }
+    },
+    {
+      "slug": "leatherhead",
+      "name": "Leatherhead",
+      "sfid": "a2T4J000001JJadUAG",
+      "stats": {
+        "total": 73,
+        "off_peak_weekday": 23,
+        "weekend": 14,
+        "categories": {
+          "Cardio": 11,
+          "Dance": 5,
+          "Tone": 10,
+          "Cycle": 14,
+          "swim": 5,
+          "Balance": 25,
+          "HIIT": 3
+        }
+      }
+    },
+    {
+      "slug": "leeds",
+      "name": "Leeds",
+      "sfid": "a2T4J000001JJanUAG",
+      "stats": {
+        "total": 68,
+        "off_peak_weekday": 23,
+        "weekend": 10,
+        "categories": {
+          "HIIT": 6,
+          "swim": 4,
+          "Cardio": 10,
+          "Balance": 15,
+          "Dance": 4,
+          "Tone": 22,
+          "Cycle": 5,
+          "Athletic": 2
+        }
+      }
+    },
+    {
+      "slug": "leicester",
+      "name": "Leicester",
+      "sfid": "a2T4J000001JJasUAG",
+      "stats": {
+        "total": 115,
+        "off_peak_weekday": 36,
+        "weekend": 18,
+        "categories": {
+          "HIIT": 17,
+          "Cycle": 17,
+          "swim": 10,
+          "Balance": 33,
+          "Cardio": 9,
+          "Tone": 21,
+          "Athletic": 4,
+          "Dance": 4
+        }
+      }
+    },
+    {
+      "slug": "letchworth-garden-city",
+      "name": "Letchworth",
+      "sfid": "a2T4J000001JJaxUAG",
+      "stats": {
+        "total": 126,
+        "off_peak_weekday": 44,
+        "weekend": 20,
+        "categories": {
+          "Cycle": 13,
+          "HIIT": 6,
+          "Tone": 34,
+          "Athletic": 2,
+          "Balance": 36,
+          "Cardio": 19,
+          "swim": 9,
+          "Dance": 5,
+          "Junior": 2
+        }
+      }
+    },
+    {
+      "slug": "liverpool",
+      "name": "Liverpool",
+      "sfid": "a2T4J000001JJb2UAG",
+      "stats": {
+        "total": 92,
+        "off_peak_weekday": 32,
+        "weekend": 16,
+        "categories": {
+          "Cardio": 18,
+          "Cycle": 13,
+          "Tone": 11,
+          "swim": 8,
+          "Balance": 27,
+          "Junior": 8,
+          "Dance": 3,
+          "HIIT": 2,
+          "Athletic": 2
+        }
+      }
+    },
+    {
+      "slug": "manchester-printworks",
+      "name": "Manchester",
+      "sfid": "a2T4J000001JJaYUAW",
+      "stats": {
+        "total": 67,
+        "off_peak_weekday": 27,
+        "weekend": 11,
+        "categories": {
+          "Tone": 13,
+          "Athletic": 11,
+          "Cardio": 10,
+          "swim": 4,
+          "Balance": 18,
+          "Dance": 4,
+          "Cycle": 6,
+          "HIIT": 1
+        }
+      }
+    },
+    {
+      "slug": "medway",
+      "name": "Medway",
+      "sfid": "a2T4J000001JJaJUAW",
+      "stats": {
+        "total": 122,
+        "off_peak_weekday": 38,
+        "weekend": 23,
+        "categories": {
+          "HIIT": 1,
+          "Athletic": 8,
+          "Tone": 28,
+          "Cycle": 15,
+          "Balance": 25,
+          "swim": 8,
+          "Cardio": 22,
+          "Dance": 8,
+          "Junior": 7
+        }
+      }
+    },
+    {
+      "slug": "milngavie",
+      "name": "Milngavie",
+      "sfid": "a2T4J000001JJZWUA4",
+      "stats": {
+        "total": 172,
+        "off_peak_weekday": 55,
+        "weekend": 23,
+        "categories": {
+          "Athletic": 16,
+          "Balance": 73,
+          "HIIT": 5,
+          "Cardio": 15,
+          "Tone": 27,
+          "swim": 5,
+          "Cycle": 17,
+          "Dance": 11,
+          "Junior": 3
+        }
+      }
+    },
+    {
+      "slug": "milton-keynes",
+      "name": "Milton Keynes",
+      "sfid": "a2T4J000001JJb7UAG",
+      "stats": {
+        "total": 104,
+        "off_peak_weekday": 42,
+        "weekend": 16,
+        "categories": {
+          "Cardio": 14,
+          "Cycle": 15,
+          "Balance": 23,
+          "Tone": 24,
+          "swim": 10,
+          "Junior": 6,
+          "HIIT": 6,
+          "Dance": 4,
+          "Athletic": 2
+        }
+      }
+    },
+    {
+      "slug": "moorgate",
+      "name": "Moorgate",
+      "sfid": "a2T4J000001JJbCUAW",
+      "stats": {
+        "total": 69,
+        "off_peak_weekday": 32,
+        "weekend": 5,
+        "categories": {
+          "Tone": 15,
+          "Cycle": 16,
+          "Balance": 23,
+          "Athletic": 8,
+          "swim": 5,
+          "Dance": 1,
+          "Cardio": 1
+        }
+      }
+    },
+    {
+      "slug": "newbury",
+      "name": "Newbury",
+      "sfid": "a2T4J000001JJbHUAW",
+      "stats": {
+        "total": 91,
+        "off_peak_weekday": 27,
+        "weekend": 16,
+        "categories": {
+          "Cycle": 12,
+          "Cardio": 15,
+          "Balance": 24,
+          "Tone": 22,
+          "swim": 7,
+          "Dance": 1,
+          "HIIT": 6,
+          "Athletic": 3,
+          "Junior": 1
+        }
+      }
+    },
+    {
+      "slug": "norbury",
+      "name": "Norbury",
+      "sfid": "a2T4J000001JJbMUAW",
+      "stats": {
+        "total": 88,
+        "off_peak_weekday": 34,
+        "weekend": 18,
+        "categories": {
+          "Tone": 17,
+          "Cycle": 15,
+          "Dance": 6,
+          "Balance": 28,
+          "swim": 12,
+          "Athletic": 3,
+          "Cardio": 5,
+          "HIIT": 2
+        }
+      }
+    },
+    {
+      "slug": "northampton",
+      "name": "Northampton",
+      "sfid": "a2T4J000001JJa9UAG",
+      "stats": {
+        "total": 115,
+        "off_peak_weekday": 44,
+        "weekend": 17,
+        "categories": {
+          "Balance": 24,
+          "Cycle": 16,
+          "Cardio": 15,
+          "Tone": 32,
+          "Athletic": 9,
+          "Dance": 8,
+          "swim": 9,
+          "HIIT": 2
+        }
+      }
+    },
+    {
+      "slug": "norwich",
+      "name": "Norwich",
+      "sfid": "a2T4J000001JJbRUAW",
+      "stats": {
+        "total": 142,
+        "off_peak_weekday": 56,
+        "weekend": 21,
+        "categories": {
+          "Athletic": 7,
+          "Cycle": 9,
+          "Tone": 34,
+          "swim": 10,
+          "Balance": 56,
+          "HIIT": 6,
+          "Cardio": 16,
+          "Dance": 4
+        }
+      }
+    },
+    {
+      "slug": "nottingham",
+      "name": "Nottingham",
+      "sfid": "a2T4J000001JJaEUAW",
+      "stats": {
+        "total": 112,
+        "off_peak_weekday": 35,
+        "weekend": 17,
+        "categories": {
+          "Cycle": 20,
+          "Cardio": 15,
+          "Tone": 13,
+          "swim": 11,
+          "HIIT": 4,
+          "Athletic": 6,
+          "Balance": 36,
+          "Dance": 7
+        }
+      }
+    },
+    {
+      "slug": "nuneaton",
+      "name": "Nuneaton",
+      "sfid": "a2T4J000001JJaOUAW",
+      "stats": {
+        "total": 125,
+        "off_peak_weekday": 39,
+        "weekend": 24,
+        "categories": {
+          "Cycle": 18,
+          "HIIT": 3,
+          "Tone": 29,
+          "Cardio": 13,
+          "Dance": 8,
+          "Balance": 28,
+          "Athletic": 11,
+          "swim": 15
+        }
+      }
+    },
+    {
+      "slug": "oxfordshire",
+      "name": "Oxfordshire",
+      "sfid": "a2T4J000001JJblUAG",
+      "stats": {
+        "total": 161,
+        "off_peak_weekday": 57,
+        "weekend": 28,
+        "categories": {
+          "Cardio": 20,
+          "Balance": 52,
+          "swim": 10,
+          "Tone": 23,
+          "Cycle": 14,
+          "Athletic": 24,
+          "HIIT": 12,
+          "Dance": 6
+        }
+      }
+    },
+    {
+      "slug": "paddington",
+      "name": "Paddington",
+      "sfid": "a2T4J000001JJbqUAG",
+      "stats": {
+        "total": 79,
+        "off_peak_weekday": 36,
+        "weekend": 17,
+        "categories": {
+          "Cycle": 10,
+          "Tone": 16,
+          "swim": 4,
+          "Balance": 24,
+          "Dance": 6,
+          "Athletic": 11,
+          "Cardio": 5,
+          "HIIT": 3
+        }
+      }
+    },
+    {
+      "slug": "plymouth",
+      "name": "Plymouth",
+      "sfid": "a2T4J000001JJbvUAG",
+      "stats": {
+        "total": 100,
+        "off_peak_weekday": 35,
+        "weekend": 17,
+        "categories": {
+          "Balance": 28,
+          "Dance": 7,
+          "Athletic": 15,
+          "Cardio": 11,
+          "Cycle": 8,
+          "swim": 6,
+          "Tone": 22,
+          "HIIT": 3
+        }
+      }
+    },
+    {
+      "slug": "portsmouth",
+      "name": "Portsmouth",
+      "sfid": "a2T4J000001JJbbUAG",
+      "stats": {
+        "total": 86,
+        "off_peak_weekday": 24,
+        "weekend": 15,
+        "categories": {
+          "Balance": 24,
+          "Tone": 21,
+          "swim": 7,
+          "Dance": 9,
+          "Cycle": 8,
+          "Cardio": 9,
+          "Junior": 7,
+          "HIIT": 1
+        }
+      }
+    },
+    {
+      "slug": "preston",
+      "name": "Preston",
+      "sfid": "a2T4J000001JJc0UAG",
+      "stats": {
+        "total": 126,
+        "off_peak_weekday": 34,
+        "weekend": 18,
+        "categories": {
+          "Athletic": 7,
+          "Balance": 31,
+          "Cycle": 18,
+          "Tone": 26,
+          "Cardio": 24,
+          "swim": 7,
+          "Junior": 4,
+          "HIIT": 4,
+          "Dance": 5
+        }
+      }
+    },
+    {
+      "slug": "reading",
+      "name": "Reading",
+      "sfid": "a2T4J000001JJc5UAG",
+      "stats": {
+        "total": 76,
+        "off_peak_weekday": 25,
+        "weekend": 12,
+        "categories": {
+          "HIIT": 7,
+          "Balance": 23,
+          "swim": 9,
+          "Dance": 4,
+          "Cycle": 7,
+          "Cardio": 10,
+          "Tone": 16
+        }
+      }
+    },
+    {
+      "slug": "romford",
+      "name": "Romford",
+      "sfid": "a2T4J000001JJaUUAW",
+      "stats": {
+        "total": 99,
+        "off_peak_weekday": 37,
+        "weekend": 20,
+        "categories": {
+          "Tone": 30,
+          "Cycle": 12,
+          "HIIT": 7,
+          "Athletic": 5,
+          "swim": 6,
+          "Balance": 21,
+          "Junior": 2,
+          "Dance": 4,
+          "Cardio": 12
+        }
+      }
+    },
+    {
+      "slug": "rugby",
+      "name": "Rugby",
+      "sfid": "a2T4J000001JJcAUAW",
+      "stats": {
+        "total": 131,
+        "off_peak_weekday": 51,
+        "weekend": 24,
+        "categories": {
+          "Balance": 33,
+          "Cycle": 20,
+          "HIIT": 15,
+          "Cardio": 9,
+          "Athletic": 9,
+          "Tone": 26,
+          "swim": 8,
+          "Dance": 11
+        }
+      }
+    },
+    {
+      "slug": "sheffield",
+      "name": "Sheffield",
+      "sfid": "a2T4J000001JJcFUAW",
+      "stats": {
+        "total": 152,
+        "off_peak_weekday": 54,
+        "weekend": 21,
+        "categories": {
+          "Tone": 34,
+          "Balance": 43,
+          "Dance": 9,
+          "Cardio": 28,
+          "Cycle": 22,
+          "swim": 7,
+          "Athletic": 6,
+          "HIIT": 3
+        }
+      }
+    },
+    {
+      "slug": "shipley",
+      "name": "Shipley",
+      "sfid": "a2T4J000001JJcPUAW",
+      "stats": {
+        "total": 105,
+        "off_peak_weekday": 33,
+        "weekend": 16,
+        "categories": {
+          "Cycle": 15,
+          "Balance": 31,
+          "Tone": 24,
+          "Cardio": 8,
+          "swim": 7,
+          "Dance": 6,
+          "Athletic": 5,
+          "HIIT": 9
+        }
+      }
+    },
+    {
+      "slug": "shoreditch",
+      "name": "Shoreditch",
+      "sfid": "a2T4J000001JJcUUAW",
+      "stats": {
+        "total": 42,
+        "off_peak_weekday": 20,
+        "weekend": 8,
+        "categories": {
+          "Tone": 11,
+          "Athletic": 2,
+          "Balance": 17,
+          "HIIT": 3,
+          "Cardio": 3,
+          "Cycle": 4,
+          "Dance": 2
+        }
+      }
+    },
+    {
+      "slug": "st-albans",
+      "name": "St Albans",
+      "sfid": "a2T4J000001JJaFUAW",
+      "stats": {
+        "total": 134,
+        "off_peak_weekday": 47,
+        "weekend": 26,
+        "categories": {
+          "Cycle": 15,
+          "HIIT": 10,
+          "Tone": 28,
+          "Balance": 36,
+          "Cardio": 12,
+          "Athletic": 2,
+          "swim": 17,
+          "Dance": 11,
+          "Junior": 3
+        }
+      }
+    },
+    {
+      "slug": "stockley-park",
+      "name": "Stockley Park",
+      "sfid": "a2T4J000001JJbWUAW",
+      "stats": {
+        "total": 135,
+        "off_peak_weekday": 47,
+        "weekend": 29,
+        "categories": {
+          "HIIT": 18,
+          "Balance": 62,
+          "Tone": 17,
+          "Athletic": 4,
+          "swim": 7,
+          "Cardio": 6,
+          "Cycle": 11,
+          "Dance": 7,
+          "Junior": 3
+        }
+      }
+    },
+    {
+      "slug": "stoke",
+      "name": "Stoke-on-Trent",
+      "sfid": "a2T4J000001JJceUAG",
+      "stats": {
+        "total": 126,
+        "off_peak_weekday": 34,
+        "weekend": 18,
+        "categories": {
+          "Cardio": 27,
+          "Tone": 31,
+          "Cycle": 18,
+          "Balance": 29,
+          "swim": 7,
+          "Dance": 6,
+          "HIIT": 8
+        }
+      }
+    },
+    {
+      "slug": "stoke-poges",
+      "name": "Stoke Poges",
+      "sfid": "a2T4J000001JJcZUAW",
+      "stats": {
+        "total": 119,
+        "off_peak_weekday": 41,
+        "weekend": 23,
+        "categories": {
+          "Athletic": 13,
+          "Balance": 51,
+          "Cardio": 8,
+          "swim": 7,
+          "Cycle": 8,
+          "Tone": 20,
+          "Dance": 2,
+          "HIIT": 8,
+          "Junior": 2
+        }
+      }
+    },
+    {
+      "slug": "sunbury",
+      "name": "Sunbury",
+      "sfid": "a2T4J000001JJcjUAG",
+      "stats": {
+        "total": 111,
+        "off_peak_weekday": 41,
+        "weekend": 18,
+        "categories": {
+          "Athletic": 9,
+          "Balance": 30,
+          "swim": 10,
+          "Tone": 20,
+          "Dance": 5,
+          "Cycle": 18,
+          "Junior": 6,
+          "HIIT": 3,
+          "Cardio": 10
+        }
+      }
+    },
+    {
+      "slug": "surbiton",
+      "name": "Surbiton",
+      "sfid": "a2T4J000001JJcKUAW",
+      "stats": {
+        "total": 145,
+        "off_peak_weekday": 46,
+        "weekend": 30,
+        "categories": {
+          "HIIT": 14,
+          "Cardio": 10,
+          "Balance": 40,
+          "Tone": 25,
+          "Cycle": 30,
+          "swim": 10,
+          "Athletic": 6,
+          "Dance": 7,
+          "Junior": 3
+        }
+      }
+    },
+    {
+      "slug": "swindon",
+      "name": "Swindon",
+      "sfid": "a2T4J000001JJbgUAG",
+      "stats": {
+        "total": 77,
+        "off_peak_weekday": 27,
+        "weekend": 14,
+        "categories": {
+          "Cycle": 11,
+          "HIIT": 6,
+          "Balance": 20,
+          "swim": 7,
+          "Tone": 14,
+          "Cardio": 14,
+          "Dance": 4,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "taunton",
+      "name": "Taunton",
+      "sfid": "a2T4J000001JJeLUAW",
+      "stats": {
+        "total": 129,
+        "off_peak_weekday": 46,
+        "weekend": 13,
+        "categories": {
+          "Athletic": 8,
+          "HIIT": 6,
+          "Tone": 34,
+          "Balance": 33,
+          "Cycle": 19,
+          "Cardio": 13,
+          "Dance": 5,
+          "swim": 11
+        }
+      }
+    },
+    {
+      "slug": "telford",
+      "name": "Telford",
+      "sfid": "a2T4J000001JJeBUAW",
+      "stats": {
+        "total": 91,
+        "off_peak_weekday": 27,
+        "weekend": 17,
+        "categories": {
+          "HIIT": 6,
+          "Balance": 21,
+          "Cardio": 15,
+          "Cycle": 16,
+          "Tone": 19,
+          "swim": 9,
+          "Dance": 5
+        }
+      }
+    },
+    {
+      "slug": "tunbridge-wells",
+      "name": "Tunbridge Wells",
+      "sfid": "a2T4J000001JJe6UAG",
+      "stats": {
+        "total": 82,
+        "off_peak_weekday": 31,
+        "weekend": 11,
+        "categories": {
+          "Tone": 12,
+          "Balance": 33,
+          "Cycle": 11,
+          "Cardio": 11,
+          "swim": 5,
+          "HIIT": 5,
+          "Dance": 4,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "twickenham",
+      "name": "Twickenham",
+      "sfid": "a2T4J000001JJeVUAW",
+      "stats": {
+        "total": 89,
+        "off_peak_weekday": 25,
+        "weekend": 20,
+        "categories": {
+          "Tone": 14,
+          "Balance": 45,
+          "Cardio": 5,
+          "swim": 9,
+          "Cycle": 7,
+          "Dance": 5,
+          "HIIT": 3,
+          "Athletic": 1
+        }
+      }
+    },
+    {
+      "slug": "wakefield",
+      "name": "Wakefield",
+      "sfid": "a2T4J000001JJeaUAG",
+      "stats": {
+        "total": 117,
+        "off_peak_weekday": 41,
+        "weekend": 15,
+        "categories": {
+          "Cycle": 17,
+          "Cardio": 19,
+          "Balance": 30,
+          "Tone": 18,
+          "Dance": 14,
+          "swim": 11,
+          "Athletic": 2,
+          "HIIT": 6
+        }
+      }
+    },
+    {
+      "slug": "wandsworth",
+      "name": "Wandsworth",
+      "sfid": "a2T4J000001JJeGUAW",
+      "stats": {
+        "total": 102,
+        "off_peak_weekday": 35,
+        "weekend": 22,
+        "categories": {
+          "Cycle": 7,
+          "Balance": 36,
+          "Cardio": 7,
+          "Tone": 27,
+          "swim": 8,
+          "Athletic": 6,
+          "HIIT": 3,
+          "Dance": 6,
+          "Junior": 2
+        }
+      }
+    },
+    {
+      "slug": "wandsworth-southside",
+      "name": "Wandsworth Southside",
+      "sfid": "a2T4J000001JJekUAG",
+      "stats": {
+        "total": 75,
+        "off_peak_weekday": 21,
+        "weekend": 17,
+        "categories": {
+          "Cycle": 12,
+          "Balance": 18,
+          "swim": 3,
+          "Tone": 19,
+          "Cardio": 9,
+          "Dance": 5,
+          "HIIT": 9
+        }
+      }
+    },
+    {
+      "slug": "warwick",
+      "name": "Warwick",
+      "sfid": "a2T4J000001JJepUAG",
+      "stats": {
+        "total": 142,
+        "off_peak_weekday": 53,
+        "weekend": 18,
+        "categories": {
+          "Athletic": 14,
+          "Cycle": 23,
+          "Balance": 38,
+          "Tone": 25,
+          "swim": 12,
+          "Cardio": 16,
+          "Dance": 8,
+          "HIIT": 6
+        }
+      }
+    },
+    {
+      "slug": "west-byfleet",
+      "name": "West Byfleet",
+      "sfid": "a2T4J000001JJeuUAG",
+      "stats": {
+        "total": 93,
+        "off_peak_weekday": 27,
+        "weekend": 15,
+        "categories": {
+          "HIIT": 10,
+          "Balance": 33,
+          "Cycle": 15,
+          "Tone": 16,
+          "swim": 7,
+          "Dance": 5,
+          "Cardio": 4,
+          "Junior": 3
+        }
+      }
+    },
+    {
+      "slug": "weston-super-mare",
+      "name": "Weston-Super-Mare",
+      "sfid": "a2T4J000001JJefUAG",
+      "stats": {
+        "total": 103,
+        "off_peak_weekday": 38,
+        "weekend": 15,
+        "categories": {
+          "Cycle": 16,
+          "HIIT": 7,
+          "Tone": 19,
+          "Cardio": 9,
+          "Balance": 30,
+          "swim": 8,
+          "Dance": 10,
+          "Athletic": 4
+        }
+      }
+    },
+    {
+      "slug": "wimbledon",
+      "name": "Wimbledon",
+      "sfid": "a2T4J000001JJeQUAW",
+      "stats": {
+        "total": 155,
+        "off_peak_weekday": 41,
+        "weekend": 35,
+        "categories": {
+          "Cycle": 13,
+          "HIIT": 9,
+          "Balance": 76,
+          "Tone": 23,
+          "swim": 10,
+          "Dance": 8,
+          "Athletic": 2,
+          "Cardio": 13,
+          "Junior": 1
+        }
+      }
+    },
+    {
+      "slug": "wokingham",
+      "name": "Wokingham",
+      "sfid": "a2T4J000001JJezUAG",
+      "stats": {
+        "total": 144,
+        "off_peak_weekday": 39,
+        "weekend": 22,
+        "categories": {
+          "Cardio": 11,
+          "Balance": 77,
+          "Tone": 17,
+          "Cycle": 15,
+          "HIIT": 12,
+          "swim": 4,
+          "Junior": 2,
+          "Dance": 4,
+          "Athletic": 2
+        }
+      }
+    },
+    {
+      "slug": "wolverhampton",
+      "name": "Wolverhampton",
+      "sfid": "a2T4J000001JJe1UAG",
+      "stats": {
+        "total": 108,
+        "off_peak_weekday": 35,
+        "weekend": 19,
+        "categories": {
+          "Tone": 23,
+          "Cardio": 10,
+          "Balance": 35,
+          "HIIT": 12,
+          "Cycle": 12,
+          "swim": 10,
+          "Dance": 6
+        }
+      }
+    },
+    {
+      "slug": "worcester",
+      "name": "Worcester",
+      "sfid": "a2T4J000001JJdOUAW",
+      "stats": {
+        "total": 113,
+        "off_peak_weekday": 41,
+        "weekend": 20,
+        "categories": {
+          "HIIT": 8,
+          "Balance": 38,
+          "Tone": 23,
+          "Cardio": 17,
+          "Dance": 9,
+          "Athletic": 3,
+          "Cycle": 10,
+          "swim": 5
+        }
+      }
+    },
+    {
+      "slug": "yeovil",
+      "name": "Yeovil",
+      "sfid": "a2T4J000001JJf4UAG",
+      "stats": {
+        "total": 83,
+        "off_peak_weekday": 24,
+        "weekend": 13,
+        "categories": {
+          "HIIT": 3,
+          "Tone": 14,
+          "Cycle": 13,
+          "Balance": 22,
+          "Dance": 6,
+          "swim": 8,
+          "Cardio": 11,
+          "Junior": 3,
+          "Athletic": 3
+        }
+      }
+    }
+  ]
+}

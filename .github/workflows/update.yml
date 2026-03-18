@@ -2,7 +2,7 @@ name: Update Class Schedule Report
 
 on:
   schedule:
-    # Every Monday at 07:00 UTC (08:00 BST / 07:00 GMT) — classes for the coming week
+    # Every Monday at 07:00 UTC — refreshes the current week's data
     - cron: "0 7 * * 1"
   workflow_dispatch:   # Allow manual trigger from GitHub UI
 
